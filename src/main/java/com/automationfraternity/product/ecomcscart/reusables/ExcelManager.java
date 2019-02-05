@@ -1,13 +1,16 @@
 package com.automationfraternity.product.ecomcscart.reusables;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
 /*
@@ -15,31 +18,72 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
  * Date: 01/02/2019
  */
 public class ExcelManager {
-	public static String TESTDATA_SHEET_PATH = "";//here we put path of excel file
-
-
-	static Workbook book;
-	static Sheet sheet;
-
+	
+	Workbook book = null;
 
 	
 
-	public static Object[][] getTestData(String sheetName) {
-		FileInputStream file = null;
+	public static Object[][] getTestData(String filePath,String fileName,String sheetName) {
+		
+		File file =    new File(filePath+"\\"+fileName);
+
+		    //Create an object of FileInputStream class to read excel file
+
+		FileInputStream fis = null;
 		try {
-			file = new FileInputStream(TESTDATA_SHEET_PATH);
+			fis = new FileInputStream(file);
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();//print the system.err. exception
 		}
+
+		Workbook book = null;
+		  //Find the file extension by splitting file name in substring  and getting only extension name
+
+	    String fileExtensionName = fileName.substring(fileName.indexOf("."));
+
+	    //Check condition if the file is xlsx file
+
+	    if(fileExtensionName.equals(".xlsx")){
+
+	    //If it is xlsx file then create object of XSSFWorkbook class
+
+	    try {
+			book = new XSSFWorkbook(fis);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}}
+	    //Check condition if the file is xls file
+	    
+	    else if(fileExtensionName.equals(".xls")){
+
+	        //If it is xls file then create object of XSSFWorkbook class
+
+	        try {
+				book = new HSSFWorkbook(fis);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+	    }
+
+	    //Read sheet inside the workbook by its name
+
+	    
+
+
 		try {
-			book = WorkbookFactory.create(file);
+			book = WorkbookFactory.create(fis);
 		} catch (InvalidFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		sheet = book.getSheet(sheetName);
+		
+		Sheet sheet = book.getSheet(sheetName);
+		
 		Object[][] data = new Object[sheet.getLastRowNum()][sheet.getRow(0).getLastCellNum()];
 		// System.out.println(sheet.getLastRowNum() + "--------" +
 		// sheet.getRow(0).getLastCellNum());
@@ -50,11 +94,6 @@ public class ExcelManager {
 			}
 		}
 		return data;
-	}//using testng data provider
-//@DataProvider
-//	public Object[][] getCSTestData(){
-//		Object data[][] = ExcelManager.getTestData(sheetName);//sheetName=title name of excel file
-//		return data;
-//	}
+	}
 //	@Test(priority=0, dataProvider="getCSTestData")
 }
