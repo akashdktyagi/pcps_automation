@@ -1,8 +1,10 @@
-package main.java.com.automationfraternity.product.ecomcscart.po;
+package com.automationfraternity.product.ecomcscart.po;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.Select;
+
 
 /**
  * 
@@ -25,16 +27,16 @@ public class po_common_elements
 	//************************ My Account Dropdown Locators***************************
 	
 	@FindBy(how = How.XPATH,using="//div[@class='ty-dropdown-box  top-my-account ty-float-right']")
-	private WebElement MyAccount_Click;
+	private WebElement MyAccount_Link;
 	
 	@FindBy(how = How.XPATH,using="//a[text()='Orders' and @class='ty-account-info__a underlined']")
-	private WebElement MyAccount_Orders_Click;
+	private WebElement MyAccount_Orders_Link;
 	
 	@FindBy(how = How.XPATH,using="//a[text()='Comparison list' and @class='ty-account-info__a underlined']")
-	private WebElement MyAccount_ComparisonList_Click;
+	private WebElement MyAccount_ComparisonList_Link;
 	
 	@FindBy(how = How.XPATH,using="//a[text()='Wish list' and @class='ty-account-info__a']")
-	private WebElement MyAccount_WishList_Click;
+	private WebElement MyAccount_WishList_Link;
 	
 	@FindBy(how = How.XPATH,using="//input[@name='hint_track_data' and @class='ty-input-text cm-hint']")
 	private WebElement MyAccount_TrackMyOrder_TextBox;
@@ -97,7 +99,7 @@ public class po_common_elements
 	private WebElement User_SignOut_Button;
 	
 	//*************************************************************************************
-	//*************** Mislenious Links at Header Bar  *************************************
+	//*************** Miscellaneous Links at Header Bar  *************************************
 	
 	@FindBy(how = How.XPATH,using="//a[contains(text(),'Our blog')]")
 	private WebElement Our_Blogs_link;
@@ -111,7 +113,32 @@ public class po_common_elements
 	@FindBy(how = How.XPATH,using="//a[@id='opener_call_request_block6' and @class='cm-dialog-opener cm-dialog-auto-size ']")
 	private WebElement Request_a_Call_link;
 	
+	//********************************************************************************
+	//********** Register a New User Page WebElements  *******************************
 	
+	@FindBy(how = How.XPATH,using="//input[@type='text' and @name='user_data[email]']")
+	private WebElement New_User_EmailID_TextBox ;
+	
+	@FindBy(how = How.XPATH,using="//input[@type='password' and @id='password1']")
+	private WebElement New_User_Passsword_TextBox ;
+	
+	@FindBy(how = How.XPATH,using="//input[@type='password' and @id='password2']")
+	private WebElement New_User_Confirm_Passsword_TextBox ;
+	
+	@FindBy(how = How.XPATH,using="//input[@type='text' and @id='birthday']")
+	private WebElement New_User_Birthdate_InputBox ;
+	
+	@FindBy(how = How.XPATH,using="//div/select[@class='ui-datepicker-month' and @data-handler='selectMonth']/option")
+	private WebElement New_User_Birthdate_Month_Select ;
+	
+	@FindBy(how = How.XPATH,using="//div/select[@class='ui-datepicker-year' and @data-handler='selectYear']/option")
+	private WebElement New_User_Birthdate_Year_Select ;
+	
+	@FindBy(how = How.XPATH,using="//div[@id='ui-datepicker-div']/table/tbody/tr/td/a")
+	private WebElement New_User_Birthdate_Date_Select ;
+	
+	@FindBy(how = How.XPATH,using="//input[@id='profile_mailing_list_1' and @type='hidden']")
+	private WebElement Sign_Up_For_NewsLetter_CheckBox ;
 	
 	
 	
@@ -145,22 +172,22 @@ public class po_common_elements
 	
 	public void Click_On_MyAccount()
 	{
-		ClickOnElement(MyAccount_Click);
+		ClickOnElement(MyAccount_Link);
 	}
 	
 	public void Click_On_Orders()
 	{
-		ClickOnElement(MyAccount_Orders_Click);
+		ClickOnElement(MyAccount_Orders_Link);
 	}
 	
 	public void Click_On_ComparisonList()
 	{
-		ClickOnElement(MyAccount_ComparisonList_Click);
+		ClickOnElement(MyAccount_ComparisonList_Link);
 	}
 	
 	public void Click_On_WishList()
 	{
-		ClickOnElement(MyAccount_WishList_Click);
+		ClickOnElement(MyAccount_WishList_Link);
 	}
 	
 	public void TextInsert_On_TrackMyOrder(String OrderID)
@@ -216,21 +243,50 @@ public class po_common_elements
 	}
 	
 	//********************************************************************************
-	//********** Register Page WebElements Invoking Methods **************************
+	//********** Register a New User Page WebElements Invoking Methods ***************
 	
 	public void Click_On_RegisterUser()
 	{
 		ClickOnElement(MyAccount_Register_Button);
 	}
 	
-	public void Click_On_RegisterUser(String New_User_Email_ID)
+	public void TextInsert_On_NewUserEmailID(String New_User_Email_ID)
 	{
-		SendKeysInElement(SignIn_User_EmailID_Input_TextBox, New_User_Email_ID);
+		SendKeysInElement(New_User_EmailID_TextBox, New_User_Email_ID);
 	}
 	
+	public void TextInsert_On_NewUserPassword(String New_User_Password)
+	{
+		SendKeysInElement(New_User_Passsword_TextBox, New_User_Password);
+	}
 	
+	public void TextInsert_On_NewUserConfirmPassword(String New_User_Confirm_Password)
+	{
+		SendKeysInElement(New_User_Confirm_Passsword_TextBox, New_User_Confirm_Password);
+	}
 	
+	public void Select_On_NewUserBirthdateSelection(String New_User_BirthMonth, String New_User_BirthYear, String New_User_BirthDate)
+	{
+		ClickOnElement(New_User_Birthdate_InputBox);
+		
+		// Selecting User BirthMonth
+		Select select_User_Birth_Month = new Select(New_User_Birthdate_Month_Select);
+		select_User_Birth_Month.selectByVisibleText(New_User_BirthMonth);
+		
+		//Selecting User BirthYear
+		Select select_User_Birth_Year = new Select(New_User_Birthdate_Year_Select);
+		select_User_Birth_Year.selectByVisibleText(New_User_BirthYear);
+		
+		//Selecting User BirthDate
+		Select select_User_Birth_Date = new Select(New_User_Birthdate_Date_Select);
+		select_User_Birth_Date.selectByVisibleText(New_User_BirthDate);
+		
+	}
 	
+	public void Click_On_Sign_Up_For_NewsLetter_CheckBox()
+	{
+		ClickOnElement(Sign_Up_For_NewsLetter_CheckBox);
+	}
 	
 	
 	
