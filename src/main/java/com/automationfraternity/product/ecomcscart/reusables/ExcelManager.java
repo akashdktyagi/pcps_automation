@@ -19,9 +19,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExcelManager {
 	
-	Workbook book = null;
-
 	
+
 
 	public static Object[][] getTestData(String filePath,String fileName,String sheetName) {
 		
