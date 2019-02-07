@@ -5,16 +5,20 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
 
+import com.automationfraternity.core.UIManager;
+
 
 /**
  * 
  */
 /**
  * @author Sarang and Chintan
- * Last Updated -4.51pm 5Feb2019
+ * Last Updated 9.34pm 7Feb2019
  */
 public class po_common_elements
 {
+	
+	UIManager po_common_elements_UI_Manager = new UIManager();
 	
 	
 	//********************************************************************************
@@ -140,25 +144,14 @@ public class po_common_elements
 	@FindBy(how = How.XPATH,using="//input[@id='profile_mailing_list_1' and @type='hidden']")
 	private WebElement Sign_Up_For_NewsLetter_CheckBox ;
 	
-	
+	@FindBy(how = How.XPATH,using="//button[@name='dispatch[profiles.update]' and @type='submit']")
+	private WebElement Sign_Up_For_Register_Button ;
 	
 	//********************************************************************************
-	//********************************************************************************
-	//************************ WebElement Clicker Method *****************************
-	//********************************************************************************
-	//********************************************************************************
+	//***************** Mega Menu Product Selection **********************************
 	
-	static public void ClickOnElement(WebElement _locator)
-	{
-		_locator.click();
-	}
-	
-	static private void SendKeysInElement(WebElement _locator,String textInput)
-	{
-		SendKeysInElement(_locator, textInput);
-	}
-
-	
+	@FindBy(how = How.XPATH,using="NULL")
+	private WebElement NULL ;
 	
 	
 	//********************************************************************************
@@ -172,33 +165,33 @@ public class po_common_elements
 	
 	public void Click_On_MyAccount()
 	{
-		ClickOnElement(MyAccount_Link);
+		po_common_elements_UI_Manager.ClickElement(MyAccount_Link);
 	}
 	
 	public void Click_On_Orders()
-	{
-		ClickOnElement(MyAccount_Orders_Link);
+	{	
+		po_common_elements_UI_Manager.ClickElement(MyAccount_Orders_Link);
 	}
 	
 	public void Click_On_ComparisonList()
 	{
-		ClickOnElement(MyAccount_ComparisonList_Link);
+		po_common_elements_UI_Manager.ClickElement(MyAccount_ComparisonList_Link);
 	}
 	
 	public void Click_On_WishList()
 	{
-		ClickOnElement(MyAccount_WishList_Link);
+		po_common_elements_UI_Manager.ClickElement(MyAccount_WishList_Link);
 	}
 	
 	public void TextInsert_On_TrackMyOrder(String OrderID)
 	{
-		SendKeysInElement(MyAccount_TrackMyOrder_TextBox, OrderID);
-		ClickOnElement(MyAccount_TrackMyOrder_GoButton);
+		po_common_elements_UI_Manager.SetElementText(MyAccount_TrackMyOrder_TextBox, OrderID);
+		po_common_elements_UI_Manager.ClickElement(MyAccount_TrackMyOrder_GoButton);
 	}
 	
 	public void Click_On_SignIn()
 	{
-		ClickOnElement(MyAccount_SignIn_Button);
+		po_common_elements_UI_Manager.ClickElement(MyAccount_SignIn_Button);
 	}
 	
 	//********************************************************************************
@@ -207,39 +200,39 @@ public class po_common_elements
 	public void TextInsert_On_UserEmailID(String Username)
 	{
 		SignIn_User_EmailID_Input_TextBox.clear();
-		SendKeysInElement(SignIn_User_EmailID_Input_TextBox, Username);	
+		po_common_elements_UI_Manager.SetElementText(SignIn_User_EmailID_Input_TextBox, Username);	
 	}
 	
 	public void TextInsert_On_UserPassword(String Password)
 	{
 		SignIn_User_Password_Input_TextBox.clear();
-		SendKeysInElement(SignIn_User_Password_Input_TextBox, Password);
+		po_common_elements_UI_Manager.SetElementText(SignIn_User_Password_Input_TextBox, Password);
 	}
 	
 	public void Click_On_Remember_Me_Checkbox()
 	{
-		ClickOnElement(SignIn_User_Remember_Me_Checkbox);
+		po_common_elements_UI_Manager.ClickElement(SignIn_User_Remember_Me_Checkbox);
 	}
 	
 	public void Click_On_SignIn_User_Button()
 	{
-		ClickOnElement(SignIn_User_Button);
+		po_common_elements_UI_Manager.ClickElement(SignIn_User_Button);
 	}
 	
 	
 	public void Click_On_Register_For_New_User()
 	{
-		ClickOnElement(SignIn_User_Register_For_New_User);
+		po_common_elements_UI_Manager.ClickElement(SignIn_User_Register_For_New_User);
 	}
 	
 	public void Click_On_Forgot_Password_Link()
 	{
-		ClickOnElement(SignIn_User_Forgot_Password_Link);
+		po_common_elements_UI_Manager.ClickElement(SignIn_User_Forgot_Password_Link);
 	}
 	
 	public void Click_On_SignIn_User_Close_Window_Button()
 	{
-		ClickOnElement(SignIn_User_Close_Window_Button);
+		po_common_elements_UI_Manager.ClickElement(SignIn_User_Close_Window_Button);
 	}
 	
 	//********************************************************************************
@@ -247,27 +240,27 @@ public class po_common_elements
 	
 	public void Click_On_RegisterUser()
 	{
-		ClickOnElement(MyAccount_Register_Button);
+		po_common_elements_UI_Manager.ClickElement(MyAccount_Register_Button);
 	}
 	
 	public void TextInsert_On_NewUserEmailID(String New_User_Email_ID)
 	{
-		SendKeysInElement(New_User_EmailID_TextBox, New_User_Email_ID);
+		po_common_elements_UI_Manager.SetElementText(New_User_EmailID_TextBox, New_User_Email_ID);
 	}
 	
 	public void TextInsert_On_NewUserPassword(String New_User_Password)
 	{
-		SendKeysInElement(New_User_Passsword_TextBox, New_User_Password);
+		po_common_elements_UI_Manager.SetElementText(New_User_Passsword_TextBox, New_User_Password);
 	}
 	
 	public void TextInsert_On_NewUserConfirmPassword(String New_User_Confirm_Password)
 	{
-		SendKeysInElement(New_User_Confirm_Passsword_TextBox, New_User_Confirm_Password);
+		po_common_elements_UI_Manager.SetElementText(New_User_Confirm_Passsword_TextBox, New_User_Confirm_Password);
 	}
 	
 	public void Select_On_NewUserBirthdateSelection(String New_User_BirthMonth, String New_User_BirthYear, String New_User_BirthDate)
 	{
-		ClickOnElement(New_User_Birthdate_InputBox);
+		po_common_elements_UI_Manager.ClickElement(New_User_Birthdate_InputBox);
 		
 		// Selecting User BirthMonth
 		Select select_User_Birth_Month = new Select(New_User_Birthdate_Month_Select);
@@ -285,12 +278,18 @@ public class po_common_elements
 	
 	public void Click_On_Sign_Up_For_NewsLetter_CheckBox()
 	{
-		ClickOnElement(Sign_Up_For_NewsLetter_CheckBox);
+		po_common_elements_UI_Manager.ClickElement(Sign_Up_For_NewsLetter_CheckBox);
 	}
 	
+	public void Click_On_New_User_Register_Button()
+	{
+		po_common_elements_UI_Manager.ClickElement(Sign_Up_For_Register_Button);
+	}
 	
-	
-	
+	public void Product_Selection_From_MegaMenu(String Enter_Category, String Enter_SubCategory, String Enter_Product_Name)
+	{
+		//pending logic
+	}
 	
 	
 	
