@@ -1,4 +1,4 @@
-package main.java.com.automationfraternity.product.ecomcscart.po;
+package com.automationfraternity.product.ecomcscart.po;
 
 public class PO_Common {
 
