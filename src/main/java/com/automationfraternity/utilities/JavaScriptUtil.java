@@ -4,6 +4,12 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+/**
+ * @author Sarang Holey
+ * Updated on 5.36PM 19/02/2019
+ *
+ */
+
 public class JavaScriptUtil {
 	
 	public static void flash(WebElement element, WebDriver driver) {
@@ -72,6 +78,6 @@ public class JavaScriptUtil {
 		System.out.print("User Agent Data for Machine : ");
 		String uAgent = js.executeScript("return navigator.userAgent;").toString();
 		return uAgent;
-	}
+	} 
 
 }
