@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 /**
  * @author Sarang Holey
  * Updated on 5.36PM 19/02/2019
- *
+ * 
  */
 
 public class JavaScriptUtil {
