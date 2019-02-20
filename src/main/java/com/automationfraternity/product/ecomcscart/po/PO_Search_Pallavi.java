@@ -14,9 +14,10 @@ import org.openqa.selenium.support.How;
  * Dt: 05/02/2019
  */
 
-public class Po_Search 
+public class PO_Search_Pallavi 
 {
 	WebDriver driver;
+	UIManager UIManager
 	/*======================================================================
 	                     locators for click on brand
 	  ======================================================================*/ 

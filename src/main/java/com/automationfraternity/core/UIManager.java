@@ -55,6 +55,7 @@ public class UIManager implements IUIManager {
 	@Override
 	public void SetElementText(WebElement _locator,String text) {
 		// TODO Auto-generated method stub
+		_locator.clear();
 		_locator.sendKeys(text);
 		CmnMethods.WriteLog("info","Set Elementwith Text: " + text + " on Locator: " + _locator.toString());
 		//WriteLogAndReport(logger, "info", "info", "Set Locator with Text. Locator: " + _locator.toString() + " with text as : " + text);

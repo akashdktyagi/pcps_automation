@@ -46,7 +46,8 @@ public class TC_AddToCart extends ReportingConfig {
 
 
 		}catch(Exception e) {
-			CmnMethods.WriteLog("fail", "Test Failed due to exception. " + e.getMessage());
+			CmnMethods.WriteLog("fail", "Test Failed due to exception. " + e.getLocalizedMessage());
+			e.printStackTrace();
 
 		}
 

@@ -20,7 +20,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import main.java.com.automationfraternity.product.ecomcscart.po.Po_Search;
+import main.java.com.automationfraternity.product.ecomcscart.po.PO_Search;
 
 public class Tc_set_price 
 {
@@ -29,7 +29,7 @@ public class Tc_set_price
 	@Test
 	public void tc_smoketest_search_by_price()
 	{
-		Po_Search rv1 = PageFactory.initElements(driver, Po_Search.class);
+		PO_Search rv1 = PageFactory.initElements(driver, PO_Search.class);
 		rv1.select_by_price();
 	}
 

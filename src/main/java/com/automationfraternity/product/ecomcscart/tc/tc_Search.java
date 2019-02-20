@@ -14,7 +14,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import main.java.com.automationfraternity.product.ecomcscart.po.Po_Search;
+import main.java.com.automationfraternity.product.ecomcscart.po.PO_Search;
 
 public class tc_Search 
 {
@@ -22,7 +22,7 @@ public class tc_Search
 	@Test
 	public void tc_smoketest_search_by_brand() throws InterruptedException
 	{
-		Po_Search rv = PageFactory.initElements(driver, Po_Search.class);
+		PO_Search rv = PageFactory.initElements(driver, PO_Search.class);
 		rv.add_cart();
 	}
 
